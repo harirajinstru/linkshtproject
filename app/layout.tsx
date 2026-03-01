@@ -9,6 +9,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
+import { dark } from "@clerk/themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,11 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClerkProvider>
+        <ClerkProvider appearance={{ theme: dark }}>
           <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-sm">
             <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
               <span className="text-lg font-bold tracking-tight">Linksht</span>
