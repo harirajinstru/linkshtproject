@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { currentUser } from "@clerk/nextjs/server";
 import {
   Link2,
   BarChart2,
@@ -47,7 +49,9 @@ const features = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+  if (user) redirect("/dashboard");
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       {/* Hero */}
